@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Administrator Panel{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="btn-group">
+        <form action="./addusr" method="GET">
+            <button type="submit" name="bAddUsr" class="btn btn-success">Add User</button>
+        </form>
+
+        <form action="./rmusr" method="GET">
+            <button type="submit" name="bRmUsr" class="btn btn-danger">Remove User</button>
+        </form>
+    </div>
+
+
+{% endblock %}

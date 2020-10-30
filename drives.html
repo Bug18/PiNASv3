@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Files Manager{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+
+
+        <div class="row">
+            <div class="col-12">
+                <h2>All available drives</h2>
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Drive Name</th>
+                            <th scope="col">Total space / GB</th>
+                            <th scope="col">Used space / GB</th>
+                            <th scope="col">Free space / GB</th>
+                        </tr>
+                    </thead>
+                    {% for drive in drives %}
+                        <tbody>
+                            <tr>
+                                <td>{{ drive[0] }}</td>
+                                <td>{{ drive[1] }}</td>
+                                <td>{{ drive[2] }}</td>
+                                <td>{{ drive[3] }}</td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="col-lg-12">
+
+                <p></p>
+
+                <div class="container-fluid">
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                        <h2 class="text-danger">Read Me!</h2>
+                        <h3 class="text-primary">If drives are not visible try reloading the page first.</h3>
+                        <h3 class="text-danger">Every time You restart server You have to come to  this page to initialize drives</h3>
+                        <h4 class="text-primary">
+                            You can access FTP server by going
+                            to 'This PC' in Your File Explorer. Right mouse click on the screen and then select
+                            "Add a network location". Follow instructions on screen and then You will need
+                            to specify the location of FTP server. You have to enter: ftp://"ip of your server".
+                            Then You want to login with Your credentials (password is automatically generated and displayed
+                            on User Information page - password is valid until one of servers is restarted). You can find
+                            Your server under other drives in Your File Explorer.
+                            You only have to do it once.
+                        </h4>
+                        <h2 class="text-primary">Enjoy!</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

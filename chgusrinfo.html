@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Administrator Panel{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="container-fluid">
+        <form action="./0chg" method="POST">
+            <div class="form-group">
+                <div class="col-3">
+                    <label>Enter User ID You want to change details:</label>
+                    <input type="number" class="form-control" name="idchg">
+                    <label>Enter new username:</label>
+                    <input type="text" class="form-control" name="usrchg">
+                    <label>Enter new email:</label>
+                    <input type="email" class="form-control" name="emchg">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Confirm changes</button>
+        </form>
+    </div>
+
+    <p></p>
+
+    <div class="col-5">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                </tr>
+            </thead>
+            {% for row in rows %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ row._id }}</th>
+                        <td>{{ row.name }}</td>
+                        <td>{{ row.email }}</td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
+
+
+

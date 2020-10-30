@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}NAS Home{% endblock %}
+
+{% block body %}class="intro-header" style="background-image: url(/static/PiNAS_logo.jpg)"{% endblock %}
+
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <h3 class="text-white text-bold">{{msg}}</h3>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+{% endblock %}
+
+
+

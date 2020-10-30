@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Administrator Panel{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="container-fluid">
+        <form action="./0rm" method="POST">
+            <div class="form-group">
+                <div class="col-3">
+                    <label>Enter User ID You want to delete:</label>
+                    <input type="text" class="form-control" name="idvalue">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Remove User</button>
+        </form>
+    </div>
+
+    <p></p>
+
+    <div class="col-3">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            {% for row in rows %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ row._id }}</th>
+                        <td>{{ row.name }}</td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
+
+
+

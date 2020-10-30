@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}User Information{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h1>Hello {{ user }}!</h1>
+    <h2>Your FTP password is: {{ ftp_passwd }}</h2>
+    <div class="btn-group">
+        <form action="./chgusrinfo" method="GET">
+            <button type="submit" name="bchusrinfo" class="btn btn-info">Change User information</button>
+        </form>
+
+        <form action="./chgusrpass" method="GET">
+            <button type="submit" name="bchusrpass" class="btn btn-danger">Change User password</button>
+        </form>
+    </div>
+
+{% endblock %}

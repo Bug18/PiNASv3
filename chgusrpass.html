@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Administrator Panel{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="container-fluid">
+        <form action="./0pass" method="POST">
+            <div class="form-group">
+                <div class="col-3">
+                    <label>Enter User ID You want to change details:</label>
+                    <input type="number" class="form-control" name="idpasschg">
+                    <label>Enter old password:</label>
+                    <input type="password" class="form-control" name="passwdchk">
+                    <label>Enter new password:</label>
+                    <input type="password" class="form-control" name="passchg1">
+                    <label>Confirm new password:</label>
+                    <input type="password" class="form-control" name="passchg2">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="spinFunc()">Confirm changes</button>
+            <script>
+                function spinFunc(){
+                    document.getElementById('submit').innerHTML = "<span class='spinner-grow spinner-grow-sm'></span> Log In"
+                }
+            </script>
+        </form>
+    </div>
+
+    <p></p>
+
+    <div class="col-5">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            {% for row in rows %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ row._id }}</th>
+                        <td>{{ row.name }}</td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
+
+
+

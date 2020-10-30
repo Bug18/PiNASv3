@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Administrator Panel{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="container-fluid">
+        <form action="./0add" method="POST">
+            <div class="form-group">
+                <div class="col-3">
+                    <label>Username:</label>
+                    <input type="text" class="form-control" name="username">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-3">
+                    <label>Email:</label>
+                    <input type="email" class="form-control" name="email">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-3">
+                    <label>Password:</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-3">
+                    <label>Repeat Password:</label>
+                    <input type="password" class="form-control" name="password2">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add User</button>
+        </form>
+    </div>
+
+{% endblock %}
+
+
+
