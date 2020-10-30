@@ -110,7 +110,7 @@ def userinfo(actions2):
     user = session["username"]
     for n in range(len(logged_in_users) + 1):
         try:
-            if user not in logged_in_users[n] and ftp_password not in logged_in_users[n]:
+            if user not in logged_in_users[n] and ftp_password not in logged_in_users[n] and user != "admin":
                 ftp_data(user, ftp_password)
                 logged_in_users.append([user, ftp_password])
         except:
