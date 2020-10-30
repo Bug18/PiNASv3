@@ -28,7 +28,7 @@ def set_drive():
 def get_drive_info(drives):
     total, used, free = [], [], []
     for drive in drives:
-        path = drive #"/mnt/media" + drive
+        path = "/mnt/media" + drive
         total.append(round(shutil.disk_usage(path)[0] / (2 ** 30), 2))
         used.append(round(shutil.disk_usage(path)[1] / (2 ** 30), 2))
         free.append(round(shutil.disk_usage(path)[2] / (2 ** 30), 2))
