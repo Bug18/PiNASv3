@@ -93,7 +93,7 @@ def drives():
         flash("Log in first!")
         return redirect(url_for("login"))
     drives = []
-    avb_drives = ["C:"] # check_drives()
+    avb_drives = check_drives()
     if avb_drives == []:
         set_drive()
     total, used, free = get_drive_info(avb_drives)
@@ -228,4 +228,4 @@ def logout():
 
 if __name__ == "__main__":
     database.create_all()
-    app.run(debug=True) #, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0') #you can also add port=80 if you will be running server as root or port=8080 if you won't
