@@ -5,8 +5,8 @@ from pyftpdlib.handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
 
 
-IP = "192.168.1.6"
-FTP_PORT = 2121
+IP = "your IP inside quotes"
+FTP_PORT = 2121 #this can be changed to 21 if you will be running server as root
 
 
 def get_users():
@@ -30,7 +30,7 @@ def main():
         FTP_DATA = get_users()
     authorizer = DummyAuthorizer()
     for user in FTP_DATA:
-        FTP_DIRECTORY = "C:\\Users\\Naglic"  # "/mnt/media/"
+        FTP_DIRECTORY = "/mnt/media/"
         FTP_USER = user[0]
         FTP_PASSWORD = user[1]
         print(FTP_PASSWORD)
